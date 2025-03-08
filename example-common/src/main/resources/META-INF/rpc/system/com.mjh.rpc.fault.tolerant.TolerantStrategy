@@ -1,0 +1,1 @@
+failSafe=com.mjh.rpc.fault.tolerant.FailSafeTolerantStrategy

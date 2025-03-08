@@ -1,0 +1,3 @@
+orderly=com.mjh.rpc.loadBalancer.OrderlyLoadBalancer
+random=com.mjh.rpc.loadBalancer.RandomLoadBalancer
+consistentHash=com.mjh.rpc.loadBalancer.ConsistentHashLoadBalancer
