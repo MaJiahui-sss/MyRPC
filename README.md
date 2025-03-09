@@ -55,8 +55,8 @@ public class YourApplication {
 }
 ```
 
-### 5. 创建 RPC 请求和响应类
-创建 `RpcRequest` 和 `RpcResponse` 类，用于定义 RPC 调用的请求和响应信息：
+### 5.  RPC 请求和响应类
+ `RpcRequest` 和 `RpcResponse` 类，用于定义 RPC 调用的请求和响应信息：
 ```java
 import lombok.AllArgsConstructor;
 import lombok.Builder;
