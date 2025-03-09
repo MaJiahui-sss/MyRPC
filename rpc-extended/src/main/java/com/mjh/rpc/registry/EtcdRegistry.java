@@ -47,6 +47,7 @@ public class EtcdRegistry implements Registry {
      */
     private static final String ETCD_ROOT_PATH = "/rpc/";
 
+    private boolean isProvider = false;
 
     @Override
     public void init(RegistryConfig registryConfig) {
@@ -59,6 +60,8 @@ public class EtcdRegistry implements Registry {
 
     @Override
     public void register(ServiceMetaInfo serviceMetaInfo) throws Exception {
+
+        isProvider = true;
         // 创建 Lease 和 KV 客户端
         Lease leaseClient = client.getLeaseClient();
 
@@ -123,6 +126,9 @@ public class EtcdRegistry implements Registry {
 
     @Override
     public void destroy() {
+        if(!isProvider) {
+            return ;
+        }
         System.out.println("当前节点下线");
         //遍历结点集合，从etcd中删除
         for (String nodeKey : localRegistryNodeKeySet) {
@@ -158,7 +164,7 @@ public class EtcdRegistry implements Registry {
 
                         if (CollUtil.isEmpty(keyValueList)) {
                             //该节点已过期，需要重启节点才能注册
-                            System.out.println("结点已过期");
+                            System.out.println("当前节点的"+key+"已过期");
                             continue;
                         }
                         // 节点未过期，重新注册（相当于续签）

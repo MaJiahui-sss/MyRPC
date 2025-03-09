@@ -85,7 +85,7 @@ public class VertxTcpServer implements HttpSever {
                 netSocket.handler(tcpBufferHandlerWrapper);
             }
         });
-        server.listen(8060, "localhost", res -> {
+        server.listen(RpcApplication.getRpcConfig().getServerPort(), RpcApplication.getRpcConfig().getServerHost(), res -> {
             if (res.succeeded()) {
                 System.out.println("Server is now listening!");
             } else {
